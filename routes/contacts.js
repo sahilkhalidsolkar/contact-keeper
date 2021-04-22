@@ -41,8 +41,8 @@ router.post('/',[auth,[
             type,
             user:req.user.id
         })
-        await newContact.save()
-        res.json({msg:'successful'})
+       const contact= await newContact.save()
+        res.json(contact)
     } catch (error) {
         res.status(400).json({msg:'server error'})
         
@@ -54,14 +54,16 @@ router.post('/',[auth,[
 // @desc    edit contacts
 // @access  private
 
-router.put('/:id',(req,res)=>{
+router.put('/:id',async(req,res)=>{
+    await Contact.updateOne({ _id: req.params.id }, { ...req.body});
     res.send('edit contacts')
 })
 // @route   DELETE api/contacts/:id
 // @desc    delete contacts
 // @access  private
 
-router.delete('/:id',(req,res)=>{
+router.delete('/:id',async(req,res)=>{
+    await Contact.deleteOne({ _id: req.params.id });
     res.send('deleted the  contacts')
 })
 
