@@ -60,7 +60,7 @@ router.put('/:id',async(req,res)=>{
 })
 // @route   DELETE api/contacts/:id
 // @desc    delete contacts
-// @access  privat
+// @access  private
 
 router.delete('/:id',async(req,res)=>{
     await Contact.deleteOne({ _id: req.params.id });
