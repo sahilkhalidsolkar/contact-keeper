@@ -12,6 +12,7 @@ app.use(cors())
 // including routes
 
 // sahil ke route
+console.log('sahil ke routes')
 app.use('/api/users',require('./routes/user'))
 app.use('/api/auth',require('./routes/auth'))
 app.use('/api/contacts',require('./routes/contacts'))
